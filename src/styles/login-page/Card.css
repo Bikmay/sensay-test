@@ -1,0 +1,17 @@
+.card{
+    height: 500px;
+    width: 400px;
+
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); 
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.cardHead{
+    font-weight: normal;   
+    position: relative;
+    font-size: 24px;
+
+    top:10px;
+    left:20px;
+}

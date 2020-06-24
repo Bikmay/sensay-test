@@ -1,0 +1,38 @@
+.formItem{
+    width:90%;
+    position: relative;
+
+    top:16px;
+    left: 20px;
+}
+
+.formItemLabel{
+    font-size: 16px;
+    position: relative;
+    bottom: 4px;
+    margin-bottom: 0;
+    display: inline-block;
+}
+.formItemOption{
+    font-size: 10px;
+    position: relative;
+    margin-bottom: 0;
+    display: inline;
+    float: right;
+    bottom: -6px;
+    color:#999999;
+}
+
+.formItemLabels{
+    position: relative;
+}
+.formItemInput{
+    
+    height: 26px;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+}
