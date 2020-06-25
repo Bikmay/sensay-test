@@ -7,6 +7,10 @@
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
     z-index: 2;
+
+    position: relative;
+    top: 8px;
+    left: 40px;
   }
   
   
@@ -27,5 +31,10 @@
     border-radius: 4px;
   }
   .buttonText{
-      
+    height: 20px;
+    margin: 0;
+    position: relative;
+    left: 24px;
+    top: 7px;
+    color: white;
   }
