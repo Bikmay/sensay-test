@@ -1,0 +1,19 @@
+.loginErrorMessage{
+    background-color: rgba(207, 44, 0, 0.1);
+    width: 90%;
+    position: relative;
+    left: 20px;
+    height: 60px;
+    border-radius: 4px;
+    
+}
+
+.loginErrorMessageText{
+    color:#CF2C00;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    position: relative;
+    left: 20px;
+}

@@ -15,6 +15,7 @@ class Button extends Component {
     onButtonClick(){
         this.setState({buttonContent: <div className={styles.buttonLoader}></div>})
         setTimeout(() => {this.setState({buttonContent: <p className={styles.buttonText}>Войти</p>}); }, 2000);
+        this.props.click();
     }
 
     render() {
@@ -27,7 +28,8 @@ class Button extends Component {
     }
 }
 Button.propTypes = {
-    isLoading:PropTypes.bool
+    isLoading:PropTypes.bool,
+    click:PropTypes.func
   };
 
 export default Button;
