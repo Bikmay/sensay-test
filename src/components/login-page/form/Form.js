@@ -30,15 +30,17 @@ class Form extends Component {
     const Sendsay = require('sendsay-api');
     let sendsay = new Sendsay();
     console.log('------------->');
-    console.log(this.validatinLogin(login));
+    console.log(this.validationLogin(login));
+    console.log(this.validationPassword(password));
     
-    console.log(!(this.validatinLogin(login) && this.validationPassword(password)));
     
-    if(!(this.validatinLogin(login) && this.validationPassword(password))){
+    console.log(!(this.validationLogin(login) && this.validationPassword(password)));
+    
+    if(!(this.validationLogin(login) && this.validationPassword(password))){
       console.log('OPANKI');
       
       this.props.dispatchValue({type:'loginError', text:'Wrong login or password'});
-   //   this.props.onClick(false);
+      this.props.onClick(false);
       return;
     }
     console.log(
@@ -56,14 +58,20 @@ class Form extends Component {
     
   }
 
-  validatinLogin(login){
-    let lecs = /[а-яё]/i;
-    return lecs.test(login);
+  validationLogin(login){
+    let lecs;
+    if(login.includes("@")){    
+      lecs = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    }
+    else{
+      lecs= /^[a-zA-Z0-9]+$/;
+    }
+    return lecs.test(login)
   }
-
+// [0-9a-zA-Z]{6,}
   validationPassword(password){
-    let lecs =/^[a-z\s]+$/i;
-    return !lecs.test(password);
+    let lecs = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/g ;
+    return lecs.test(password);
   }
 
   errorValidation(err){

@@ -20,7 +20,7 @@ class Card extends Component {
       this.setState({error:<p></p>, errorStyle:{}});
     }
     else{      
-      this.setState({error:<ErrorLoginMessage />, errorStyle:{ height: "410px"}})
+      this.setState({error:<ErrorLoginMessage error={this.props.store.errorMessages.errorCallbackLoginServer} />, errorStyle:{ height: "410px"}})
     }
   }
     render() {

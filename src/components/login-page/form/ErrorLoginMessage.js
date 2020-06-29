@@ -20,8 +20,7 @@ class ErrorLoginMessage extends Component {
     }
 }
 ErrorLoginMessage.propTypes = {
-    isLoading:PropTypes.bool,
-    click:PropTypes.func
+    errorMessage: PropTypes.string.isRequired
   };
 
 export default connect(
