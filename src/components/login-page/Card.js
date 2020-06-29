@@ -9,7 +9,7 @@ import styles from '../../styles/login-page/Card.css';
 class Card extends Component {
   constructor(props){
     super(props);
-    this.state={error: <p></p>};
+    this.state={error: <p></p>, errorStyle:{}};
     this.showErrorMessage=this.showErrorMessage.bind(this);
   }
 
@@ -17,18 +17,16 @@ class Card extends Component {
     console.log(tmp);
     
     if(tmp){
-      this.setState({error:<p></p>})
+      this.setState({error:<p></p>, errorStyle:{}});
     }
-    else{
-      console.log('срать');
-      
-      this.setState({error:<ErrorLoginMessage />})
+    else{      
+      this.setState({error:<ErrorLoginMessage />, errorStyle:{ height: "410px"}})
     }
   }
     render() {
       
         return (
-             <div className={styles.card}>
+             <div className={styles.card} style={this.state.errorStyle}>
                <h1 className={styles.cardHead}>API-консолька</h1>
                {this.state.error}
                <Form onClick={this.showErrorMessage}/>

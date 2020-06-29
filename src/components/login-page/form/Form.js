@@ -14,29 +14,36 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.validation=this.validation.bind(this);
+    this.errorValidation = this.errorValidation.bind(this);
   }
 
   validation(){
     console.log('button');
     console.log(this.props.store);
-    
-   // this.props.dispatchValue();    
-    this.props.onClick(false);
+    this.props.onClick(true);
 
-    require('isomorphic-fetch'); // Apply the polyfill.
+    let login = this.props.store.loginAction.login;
+    let password = this.props.store.loginAction.password;    
+
+
+    require('isomorphic-fetch'); 
     const Sendsay = require('sendsay-api');
     let sendsay = new Sendsay();
-    let auth = {
-      auth:{
-      login: this.props.store.loginAction.login,
-      sublogin: '',
-      password: this.props.store.loginAction.password 
-    }}
-    console.log('test5');
-
+    console.log('------------->');
+    console.log(this.validatinLogin(login));
+    
+    console.log(!(this.validatinLogin(login) && this.validationPassword(password)));
+    
+    if(!(this.validatinLogin(login) && this.validationPassword(password))){
+      console.log('OPANKI');
+      
+      this.props.dispatchValue({type:'loginError', text:'Wrong login or password'});
+   //   this.props.onClick(false);
+      return;
+    }
     console.log(
      sendsay.login({
-      login: this.props.store.loginAction.login,
+      login: login,
       sublogin: '',
       password: this.props.store.loginAction.password 
     }).then(function() {
@@ -44,21 +51,26 @@ class Form extends Component {
        sendsay.request({ action: 'pong', list: ['about.id']}).then(function(res) {
         console.log(res);
       }));
-    }));
-    //  console.log(
-    //   sendsay.request({ action: 'sys.settings.get', list: ['about.id']}).then(function(res) {
-    //     console.log(res.list['about.id']);
-    //   }))
-    console.log('вот тут вот');
+    }).catch(this.errorValidation));
+    console.log(this.props.store);
     
-    console.log(this.props.store.loginAction.login);
-    
+  }
 
-    console.log(auth);
-      
+  validatinLogin(login){
+    let lecs = /[а-яё]/i;
+    return lecs.test(login);
+  }
+
+  validationPassword(password){
+    let lecs =/^[a-z\s]+$/i;
+    return !lecs.test(password);
+  }
+
+  errorValidation(err){
+    console.error(err);
+    this.props.dispatchValue({type:'loginError', text:err.id})
     this.props.onClick(false);
-    
-  }//x_159311289249524
+  }
     render() {
         return (
              <div>               

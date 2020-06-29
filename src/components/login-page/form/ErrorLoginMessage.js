@@ -9,11 +9,11 @@ class ErrorLoginMessage extends Component {
         super(props);
     }
 
-    render() {
+    render() {        
         return (
              <div className={styles.loginErrorMessage} onClick={this.props.click}>
                  <p className={styles.loginErrorMessageText}>Выход не вышел</p>
-                 {this.props.store.errorLoginMessage}
+                 <p className={styles.loginErrorCallbackMessageText}>{this.props.store.errorMessages.errorCallbackLoginServer}</p>
              </div>
             
         );
